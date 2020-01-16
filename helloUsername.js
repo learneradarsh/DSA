@@ -1,5 +1,4 @@
 let standard_input = process.stdin;
-standard_input.setEncoding("utf-8");
 
 // Prompt user to input data in console.
 console.log("Please input username");
