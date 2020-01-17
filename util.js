@@ -19,7 +19,7 @@ class Util {
 
     //static method to find prime number between 0-1000
     static isPrime(number) {
-
+        number = Number(number);
         if (!isNaN(number)) {
             if (number <= 1) {
                 return false;
@@ -58,5 +58,6 @@ class Util {
         }
         return false;
     }
-
 }
+
+module.exports.Util = Util;
