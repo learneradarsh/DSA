@@ -62,7 +62,7 @@ class Util {
     }
 
     //static method to do binary search for integer
-    static binarySearch(inp, inpArray) {
+    static binarySearchForInt(inp, inpArray) {
         inp = parseInt(inp);
         let start = 0;
         let len = inpArray.length - 1;
