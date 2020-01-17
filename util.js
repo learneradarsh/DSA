@@ -12,10 +12,10 @@ class Util{
         if(stringOne.split('').sort().join('') != stringTwo.split('').sort().join('')){
             return false;
         }
+
         return true;
     }
 }
 
-//console.log(Util.isAnagram("abc","abc"));
 
   
