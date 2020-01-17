@@ -35,6 +35,15 @@ class Util {
         }
 
     }
-}
 
-console.log(Util.isPrime(7));
+    //static method to find input given numbers are prime or not
+    static isPalindrome(numberOne, numberTwo) {
+        numberOne = numberOne.toString();
+        numberTwo = numberTwo.toString();
+        if (numberOne.split('').reverse().join('') == numberTwo) {
+            return true;
+        }
+        return false;
+    }
+
+}
