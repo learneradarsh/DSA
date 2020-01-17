@@ -49,6 +49,8 @@ class Util {
 
     //static method to find prime numbers that are anagram and palindrome
     static isAnagramAndPalindrome(numberOne, numberTwo) {
+        numberOne=Number(numberOne);
+        numberTwo=Number(numberTwo);
         if (this.isPrime(numberOne) && this.isPrime(numberTwo)) {
             if (this.isAnagram(numberOne, numberTwo)) {
                 if (this.isPalindrome(numberOne, numberTwo)) {
