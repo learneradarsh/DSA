@@ -49,13 +49,31 @@ class Util {
 
     //static method to find prime numbers that are anagram and palindrome
     static isAnagramAndPalindrome(numberOne, numberTwo) {
-        numberOne=Number(numberOne);
-        numberTwo=Number(numberTwo);
+        numberOne = Number(numberOne);
+        numberTwo = Number(numberTwo);
         if (this.isPrime(numberOne) && this.isPrime(numberTwo)) {
             if (this.isAnagram(numberOne, numberTwo)) {
                 if (this.isPalindrome(numberOne, numberTwo)) {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    //static method to do binary search for integer
+    static binarySearch(inp, inpArray) {
+        inp = parseInt(inp);
+        let start = 0;
+        let len = inpArray.length - 1;
+        while (start < len) {
+            let mid = Math.floor((start + len) / 2);
+            if (inpArray[mid] === inp) {
+                return true;
+            } else if (inpArray[mid] < inp) {
+                start = mid + 1;
+            } else {
+                len = mid - 1;
             }
         }
         return false;
