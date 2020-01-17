@@ -78,6 +78,26 @@ class Util {
         }
         return false;
     }
+
+    //static method to do binary search for string
+    static binarySearchForString(inpStr, strArray) {
+        inpStr = inpStr.toString();
+        let start = 0;
+        let len = strArray.length - 1;
+        while (start < len) {
+            let mid = Math.floor((start + len) / 2);
+            if (strArray[mid] === inpStr) {
+                return true;
+            } else if (strArray[mid] < inpStr) {
+                start = mid + 1;
+            } else {
+                len = mid - 1;
+            }
+        }
+        return false;
+    }
 }
+
+console.log(Util.binarySearchForString('b',['b','a']));
 
 module.exports.Util = Util;
