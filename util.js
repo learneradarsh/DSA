@@ -64,10 +64,12 @@ class Util {
     //static method to do binary search for integer
     static binarySearchForInt(inp, inpArray) {
         inp = parseInt(inp);
+        inpArray.sort(function (a, b) { return a - b; });
         let start = 0;
         let len = inpArray.length - 1;
-        while (start < len) {
+        while (start <= len) {
             let mid = Math.floor((start + len) / 2);
+            console.log(mid)
             if (inpArray[mid] === inp) {
                 return true;
             } else if (inpArray[mid] < inp) {
@@ -82,9 +84,10 @@ class Util {
     //static method to do binary search for string
     static binarySearchForString(inpStr, strArray) {
         inpStr = inpStr.toString();
+        strArray.sort();
         let start = 0;
         let len = strArray.length - 1;
-        while (start < len) {
+        while (start <= len) {
             let mid = Math.floor((start + len) / 2);
             if (strArray[mid] === inpStr) {
                 return true;
@@ -144,6 +147,43 @@ class Util {
         }
         return inpArray;
     }
+
+    //static method to do bubble sort for integer
+    static bubbleSortForInt(inpArray) {
+        let len, i, j, stop, temp;
+        len = inpArray.length;
+        i = 0;
+        // while (i < len) {
+
+        //     //If inpArray is including any NaN element
+        //     if(isNaN(inpArray[i])){
+        //         return 0;
+        //     }
+        //     inpArray[i]=parseInt(inpArray[i]);
+        //     j=0;
+        //     while (stop == len - i) {
+        //         if (inpArray[j] > inpArray[j + 1]) {
+        //             temp = inpArray[j];
+        //             inpArray[j] = inpArray[j + 1];
+        //             inpArray[j + 1] = temp;
+        //         }
+        //         j++;
+        //     }
+        //     i++;
+        // }
+        // return inpArray;
+        for (i = 0; i < len; i++) {
+            for (j = 0, stop = len - i; j < stop; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+
+        return arr;
+    }
 }
+
+console.log(Util.binarySearchForString('gh', ['a', 'b', 'c', 'd', 'e']));
 
 module.exports.Util = Util;
