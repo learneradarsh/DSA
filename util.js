@@ -178,7 +178,7 @@ class Util {
         i = 0;
         for (i = 0; i < len; i++) {
 
-            //If inpArray is containing any NaN element
+            //If inpArray is containing any not NaN element
             if (!isNaN(inpArray[i])) {
                 return 0;
             }
