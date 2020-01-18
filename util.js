@@ -153,37 +153,24 @@ class Util {
         let len, i, j, stop, temp;
         len = inpArray.length;
         i = 0;
-        // while (i < len) {
-
-        //     //If inpArray is including any NaN element
-        //     if(isNaN(inpArray[i])){
-        //         return 0;
-        //     }
-        //     inpArray[i]=parseInt(inpArray[i]);
-        //     j=0;
-        //     while (stop == len - i) {
-        //         if (inpArray[j] > inpArray[j + 1]) {
-        //             temp = inpArray[j];
-        //             inpArray[j] = inpArray[j + 1];
-        //             inpArray[j + 1] = temp;
-        //         }
-        //         j++;
-        //     }
-        //     i++;
-        // }
-        // return inpArray;
         for (i = 0; i < len; i++) {
+
+            //If inpArray is containing any NaN element
+            if (isNaN(inpArray[i])) {
+                return 0;
+            }
+            inpArray=parseInt(inpArray[i]);
             for (j = 0, stop = len - i; j < stop; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+                if (inpArray[j] > inpArray[j + 1]) {
+                    temp = inpArray[j];
+                    inpArray[j] = inpArray[j + 1];
+                    inpArray[j + 1] = temp;
                 }
             }
         }
 
-        return arr;
+        return inpArray;
     }
 }
-
-console.log(Util.binarySearchForString('gh', ['a', 'b', 'c', 'd', 'e']));
 
 module.exports.Util = Util;
