@@ -105,10 +105,34 @@ class Util {
         while (i < size) {
 
             //If inpArray includes elements which is not a number
-            if(isNaN(inpArray[i])){
+            if (isNaN(inpArray[i])) {
                 return 0;
             }
             inpArray[i] = parseInt(inpArray[i]);
+            key = inpArray[i];
+            j = i - 1;
+            i++;
+            while (j >= 0 && inpArray[j] > key) {
+                inpArray[j + 1] = inpArray[j];
+                j = j - 1;
+            }
+            inpArray[j + 1] = key;
+        }
+        return inpArray;
+    }
+
+    //static method to do insertion sort for string
+    static insertionSortForString(inpArray) {
+        let i, key, j, size;
+        i = 1;
+        size = inpArray.length;
+        while (i < size) {
+
+            //If inpArray includes elements which is a number
+            if (!isNaN(inpArray[i])) {
+                return 0;
+            }
+            inpArray[i] = inpArray[i].toString();
             key = inpArray[i];
             j = i - 1;
             i++;
