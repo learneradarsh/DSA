@@ -63,13 +63,21 @@ class Util {
 
     //static method to do binary search for integer
     static binarySearchForInt(inp, inpArray) {
+        let i=0;
+        let lenOne=inpArray.length;
+        while(i<lenOne){
+            if(isNaN(inpArray[i]) || isNaN(inp)){
+                return 2;
+            }else{
+            inpArray[i]=parseInt(inpArray[i]);}
+            i++;
+        }
         inp = parseInt(inp);
         inpArray.sort(function (a, b) { return a - b; });
         let start = 0;
         let len = inpArray.length - 1;
         while (start <= len) {
             let mid = Math.floor((start + len) / 2);
-            console.log(mid)
             if (inpArray[mid] === inp) {
                 return true;
             } else if (inpArray[mid] < inp) {
@@ -83,6 +91,13 @@ class Util {
 
     //static method to do binary search for string
     static binarySearchForString(inpStr, strArray) {
+        let i=0;
+        while(i<strArray.length){
+            if(!isNaN(strArray[i]) || !isNaN(inpStr)){
+                return 2;
+            }
+            i++;
+        }
         inpStr = inpStr.toString();
         strArray.sort();
         let start = 0;
@@ -103,7 +118,7 @@ class Util {
     //static method to do insertion sort for integer
     static insertionSortForInt(inpArray) {
         let i, key, j, size;
-        i = 1;
+        i = 0;
         size = inpArray.length;
         while (i < size) {
 
