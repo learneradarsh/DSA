@@ -96,8 +96,30 @@ class Util {
         }
         return false;
     }
-}
 
-console.log(Util.binarySearchForString('b',['b','a']));
+    //static method to do insertion sort for integer
+    static insertionSortForInt(inpArray) {
+        let i, key, j, size;
+        i = 1;
+        size = inpArray.length;
+        while (i < size) {
+
+            //If inpArray includes elements which is not a number
+            if(isNaN(inpArray[i])){
+                return 0;
+            }
+            inpArray[i] = parseInt(inpArray[i]);
+            key = inpArray[i];
+            j = i - 1;
+            i++;
+            while (j >= 0 && inpArray[j] > key) {
+                inpArray[j + 1] = inpArray[j];
+                j = j - 1;
+            }
+            inpArray[j + 1] = key;
+        }
+        return inpArray;
+    }
+}
 
 module.exports.Util = Util;
