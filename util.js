@@ -159,7 +159,29 @@ class Util {
             if (isNaN(inpArray[i])) {
                 return 0;
             }
-            inpArray=parseInt(inpArray[i]);
+            for (j = 0, stop = len - i; j < stop; j++) {
+                if (inpArray[j] > inpArray[j + 1]) {
+                    temp = inpArray[j];
+                    inpArray[j] = inpArray[j + 1];
+                    inpArray[j + 1] = temp;
+                }
+            }
+        }
+
+        return inpArray;
+    }
+
+    //static method to do bubble sort for string
+    static bubbleSortForString(inpArray) {
+        let len, i, j, stop, temp;
+        len = inpArray.length;
+        i = 0;
+        for (i = 0; i < len; i++) {
+
+            //If inpArray is containing any NaN element
+            if (!isNaN(inpArray[i])) {
+                return 0;
+            }
             for (j = 0, stop = len - i; j < stop; j++) {
                 if (inpArray[j] > inpArray[j + 1]) {
                     temp = inpArray[j];
