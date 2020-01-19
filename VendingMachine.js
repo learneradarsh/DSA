@@ -4,16 +4,14 @@ let i=0,totalNotes=0;
 let noteMutiples=[1000,500,100,50,10,5,2,1];
 
 function calculateNotes(amount){
-    let reminder;
     if(isNaN(amount)){
         return 0;
     }
     amount=parseInt(amount);
     if(amount>0){
         if(amount>=noteMutiples[i]){
-            let calcNotes=amount/noteMutiples[i];
-            reminder=amount%noteMutiples[i];
-            amount=reminder;
+            let calcNotes=parseInt(amount/noteMutiples[i]);
+            amount=parseInt(amount%noteMutiples[i]);
             totalNotes=totalNotes+calcNotes;
             console.log(`${parseInt(calcNotes)} notes of ${noteMutiples[i]} `);
         }
