@@ -121,42 +121,39 @@ class LinkedList {
 
   //method to remove and returns the element at position pos
   pop(pos) {
-      if(pos>0 && pos>this.size){
-        return false;
-      }else{
-          let curr, prev, counter=0;
-          curr=this.head;
-          prev=curr;
+    if (pos > 0 && pos > this.size) {
+      return false;
+    } else {
+      let curr,
+        prev,
+        counter = 0;
+      curr = this.head;
+      prev = curr;
 
-          if(pos===0){
-            this.head=curr.next;
-          }else{
-              while(counter<pos){
-                  counter++;
-                  prev=curr;
-                  curr=curr.next;
-              }
+      if (pos === 0) {
+        this.head = curr.next;
+      } else {
+        while (counter < pos) {
+          counter++;
+          prev = curr;
+          curr = curr.next;
+        }
 
-              prev.next=curr.next;
-          }
-          this.size--;
-
-          return curr.element;
+        prev.next = curr.next;
       }
+      this.size--;
+
+      return curr.element;
+    }
   }
 
   //method to search element in list
   search(element) {
-    let count = 0;
-    let current = this.head;
-    while (current != null) {
-      if (current.element === element) {
-        return current.element;
-      }
-      count++;
-      current = current.next;
+    if(this.index(element) != 0){
+        return -1;
+    }else{
+        return 1;
     }
-    return -1;
   }
 }
 
@@ -165,20 +162,26 @@ fs.readFile(__dirname + "/some.txt", function(err, data) {
   if (err) {
     throw err;
   }
-  data = data.toString().split(",");
-
+  data = data.toString().trim();
   //adding file elements to list
-  for (elem of data) {
-    list.add(elem.toString().trim());
-    console.log(elem);
+  let subString = "";
+  for (let i = 0; i < data.length; i++) {
+    if (data[i] == ",") {
+      list.add(subString);
+      subString = "";
+    } else {
+      subString = subString + data[i];
+    }
   }
+  console.log(list);
 });
 console.log("Enter string to search:");
 standard_input.on("data", function(data) {
   if (data.toString().trim() === "exit") {
     process.exit();
   } else {
-    if (list.search(data.toString().trim())) {
+    console.log("what i want",list.search(data.toString().trim()));
+    if (list.search(data.toString().trim()) != -1) {
       console.log("data found");
     } else {
       console.log("data not found");
