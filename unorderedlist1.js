@@ -177,8 +177,17 @@ fs.readFile(__dirname + "/some.txt", function (err, data) {
             subString = subString + data[i];
         }
     }
-    console.log(list);
 });
+
+function writeOnFile(list) {
+    fs.writeFile(__dirname + "/output.txt", list, function (err) {
+        if (err) {
+            throw err;
+        }
+        console.log("Data written successfully");
+        process.exit();
+    });
+}
 console.log("Enter string to search:");
 standard_input.on("data", function (data) {
     if (data.toString().trim() === "exit") {
@@ -187,9 +196,13 @@ standard_input.on("data", function (data) {
         // console.log("what i want", list.search(data.toString().trim()));
         if (list.search(data.toString().trim())) {
             console.log("data found");
+            list.remove(data.toString().trim());
+            console.log(list);
         } else {
             console.log("data not found");
+            list.add(data.toString().trim());
+            console.log(list);
         }
-        process.exit();
+        writeOnFile(list);
     }
 });
