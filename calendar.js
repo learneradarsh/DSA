@@ -13,7 +13,9 @@ class Calendar {
         this.year = parseInt(this.year);
     }
     printCalendar() {
-        console.log(this.month, this.year);
+        let firstDay = (new Date(this.year, this.month)).getDay();
+        let daysInMonth = 32 - new Date(this.year, this.month, 32).getDate();
+        console.log(firstDay,daysInMonth);
     }
 }
 
