@@ -1,5 +1,5 @@
 let standard_input = process.stdin;
-let inpArr = [];
+let inpArr=[];
 class MergeSort {
 
     //method to merge arrays
@@ -37,7 +37,7 @@ standard_input.on("data", function (data) {
     if (data.toString().trim() === "exit") {
         process.exit();
     } else {
-        inpArr = data.toString().trim().split('');
+        inpArr=data.toString().trim().split('');
         console.log(MergeSort.mergeSort(inpArr));
         process.exit();
     }
