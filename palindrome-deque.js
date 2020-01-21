@@ -67,7 +67,7 @@ class Dequeue {
             this.front = -1;
             this.rear = -1;
         } else {
-            retVal=this.queue[this.front];
+            retVal = this.queue[this.front];
             // console.log("returned front",this.queue[this.front]);
             if (this.front == this.maxSize - 1) {
                 this.front = 0;
@@ -90,7 +90,7 @@ class Dequeue {
         } else if (this.rear == 0) {
             this.rear = this.maxSize - 1;
         } else {
-            retVal=this.queue[this.rear];
+            retVal = this.queue[this.rear];
             // console.log("returned read",this.queue[this.rear]);
             this.rear = this.rear - 1;
         }
@@ -120,14 +120,17 @@ standard_input.on("data", function (data) {
         data.split("").forEach(e => {
             deq.addRear(e);
         });
-        for(let i=0;i<parseInt(deq.size()/2);i++){
-            if(deq.removeFront() == deq.removeRear()){
-                console.clear();
-                console.log("palindrome");
-            }else{
-                console.clear();
-               console.log("non-palindrome"); 
+        let palenFlag = true;
+        for (let i = 0; i < parseInt(deq.size() / 2); i++) {
+            if (deq.removeFront() != deq.removeRear()) {
+                palenFlag = false;
+                break;
             }
+        }
+        if (palenFlag) {
+            console.log("Palindrome");
+        } else {
+            console.log("Non-Palindrome");
         }
         process.exit();
     }
