@@ -158,6 +158,17 @@ class LinkedList {
         }
         return false;
     }
+
+    //method to print elements of list
+    printList(){
+        let curr=this.head;
+        let str="";
+        while(curr){
+            str = str+ curr.element + " ";
+            curr=curr.next;
+        }
+        return str;
+    }
 }
 
 const list = new LinkedList();
@@ -179,8 +190,8 @@ fs.readFile(__dirname + "/some.txt", function (err, data) {
     }
 });
 
-function writeOnFile(list) {
-    fs.writeFile(__dirname + "/output.txt", list, function (err) {
+function writeOnFile(outputStr) {
+    fs.writeFile(__dirname + "/output.txt", outputStr, function (err) {
         if (err) {
             throw err;
         }
@@ -197,12 +208,12 @@ standard_input.on("data", function (data) {
         if (list.search(data.toString().trim())) {
             console.log("data found");
             list.remove(data.toString().trim());
-            console.log(list);
+            console.log(list.printList());
         } else {
             console.log("data not found");
             list.add(data.toString().trim());
-            console.log(list);
+            console.log(list.printList());
         }
-        writeOnFile(list);
+        writeOnFile(list.printList());
     }
 });
