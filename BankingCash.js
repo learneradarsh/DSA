@@ -51,9 +51,9 @@ class Queue {
 
     //method to print queue
     printQueue() {
-        let finalOutput=" ";
-        for(let x of this.queue){
-            finalOutput=finalOutput + x + "\t";
+        let finalOutput = " ";
+        for (let x of this.queue) {
+            finalOutput = finalOutput + x + "\t";
         }
         return finalOutput;
     }
@@ -71,37 +71,38 @@ function main() {
     1. Deposit
     2. WithDraw
     3. Exit
-`);}
+`);
+}
 
-    standard_input.on("data", function (data) {
-        if (data.toString().trim() === "exit") {
-            process.exit();
-        } else {
-            switch (data.toString().trim()) {
-                case "1":
-                    console.log("Your Transact Id is :", new Date());
-                    if(deposit.enqueue(parseInt(Math.random() * 100000)) == -1){
-                        console.log("Size is full");
-                    }
-                    main();
-                    break;
-                case "2":
-                    console.log("Your Transact Id is :", new Date());
-                    if(withdraw.enqueue(parseInt(Math.random() * 1000)) == -1){
-                        console.log("Size is full");
-                    }
-                    main();
-                    break;
-                case "3":
-                    console.log("Total Amount Deposited:",deposit.printQueue());
-                    console.log("Total Amount Withdrawn:",withdraw.printQueue());
-                    process.exit();
-                default:
-                    console.log("Something went wrong");
-                    process.exit();
-            }
+standard_input.on("data", function (data) {
+    if (data.toString().trim() === "exit") {
+        process.exit();
+    } else {
+        switch (data.toString().trim()) {
+            case "1":
+                console.log("Your Transact Id is :", new Date());
+                if (deposit.enqueue(parseInt(Math.random() * 100000)) == -1) {
+                    console.log("Size is full");
+                }
+                main();
+                break;
+            case "2":
+                console.log("Your Transact Id is :", new Date());
+                if (withdraw.enqueue(parseInt(Math.random() * 1000)) == -1) {
+                    console.log("Size is full");
+                }
+                main();
+                break;
+            case "3":
+                console.log("Total Amount Deposited:", deposit.printQueue());
+                console.log("Total Amount Withdrawn:", withdraw.printQueue());
+                process.exit();
+            default:
+                console.log("Something went wrong");
+                process.exit();
         }
-    });
+    }
+});
 
 
 main();
