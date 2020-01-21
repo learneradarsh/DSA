@@ -1,5 +1,5 @@
 let standard_input = process.stdin;
-let inpArr=[];
+let inpArr = [];
 class MergeSort {
 
     //method to merge arrays
@@ -31,3 +31,14 @@ class MergeSort {
         return this.merge(this.mergeSort(left), this.mergeSort(right));
     }
 }
+
+console.log("Enter string which you want to sort without spaces:");
+standard_input.on("data", function (data) {
+    if (data.toString().trim() === "exit") {
+        process.exit();
+    } else {
+        inpArr = data.toString().trim().split('');
+        console.log(MergeSort.mergeSort(inpArr));
+        process.exit();
+    }
+});
