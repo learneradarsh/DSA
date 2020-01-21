@@ -80,12 +80,16 @@ function main() {
             switch (data.toString().trim()) {
                 case "1":
                     console.log("Your Transact Id is :", new Date());
-                    deposit.enqueue(parseInt(Math.random() * 100000));
+                    if(deposit.enqueue(parseInt(Math.random() * 100000)) == -1){
+                        console.log("Size is full");
+                    }
                     main();
                     break;
                 case "2":
                     console.log("Your Transact Id is :", new Date());
-                    withdraw.enqueue(parseInt(Math.random() * 1000));
+                    if(withdraw.enqueue(parseInt(Math.random() * 1000)) == -1){
+                        console.log("Size is full");
+                    }
                     main();
                     break;
                 case "3":
