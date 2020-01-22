@@ -1,5 +1,6 @@
 let standard_input = process.stdin;
-let inputArr = [];
+let inputArr = []; // to take input from user
+
 class Calendar {
   constructor(month, year) {
     this.month = month;
@@ -128,23 +129,22 @@ class Calendar {
       weekArr = [];
       firstDay = 0;
     }
-    let s="";
-    for(let ct=0;ct<dates.length;ct++){
-      for(let nt=0;nt<7;nt++){
-        if(dates[ct][nt] == undefined){
-          dates[ct][nt]="";
+    let s = "";
+    for (let ct = 0; ct < dates.length; ct++) {
+      for (let nt = 0; nt < 7; nt++) {
+        if (dates[ct][nt] == undefined) {
+          dates[ct][nt] = "";
         }
-        s=s+dates[ct][nt]+ "\t";
+        s = s + dates[ct][nt] + "\t";
       }
-      s=s+"\n";
+      s = s + "\n";
     }
     console.log(s);
-    // console.log(dates);
   }
 }
 
 console.log("Enter Month & Year separted by space");
-standard_input.on("data", function(data) {
+standard_input.on("data", function (data) {
   if (data.toString().trim() === "exit") {
     process.exit();
   } else {

@@ -1,10 +1,11 @@
 let standard_input = process.stdin;
 
-let inputArr = [];
+let inputArr = []; //to take input from user
 class BSTCount {
     constructor() {
         this.n = 0;
     }
+    //method to find factorial of n
     fact(n) {
         let f = 1;
         for (let i = 1; i <= n; i++) {
@@ -12,6 +13,7 @@ class BSTCount {
         }
         return f;
     }
+    //method to find number of BSTs we can make for n nodes
     countBST(n) {
 
         //finding Cn using Catalan number formula

@@ -21,6 +21,7 @@ class Queue {
 
     //method to remove item from the front of the queue
     dequeue() {
+
         //isEmpty
         if (this.front == this.rear) {
             return -1;
@@ -80,13 +81,15 @@ standard_input.on("data", function (data) {
     } else {
         switch (data.toString().trim()) {
             case "1":
-                console.log("Your Transact Id is :", new Date());
+                //for deposit
+                console.log("Your Transact Id is :", new Date()); // to generate random transaction id for deposit
                 if (deposit.enqueue(parseInt(Math.random() * 100000)) == -1) {
                     console.log("Size is full");
                 }
                 main();
                 break;
             case "2":
+                //for withdraw
                 console.log("Your Transact Id is :", new Date());
                 if (withdraw.enqueue(parseInt(Math.random() * 1000)) == -1) {
                     console.log("Size is full");
@@ -94,6 +97,7 @@ standard_input.on("data", function (data) {
                 main();
                 break;
             case "3":
+                //for total deposit and withdraw in a day
                 console.log("Total Amount Deposited:", deposit.printQueue());
                 console.log("Total Amount Withdrawn:", withdraw.printQueue());
                 process.exit();

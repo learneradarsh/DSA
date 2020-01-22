@@ -1,5 +1,6 @@
 let standard_input = process.stdin;
-let inpArr=[];
+let inpArr=[]; //to take input from user
+
 class MergeSort {
 
     //method to merge arrays

@@ -1,7 +1,7 @@
-const util = require("./util");
-let inputArr = [];
-let ElapseTimeArr = [];
-let startElapseTime = 0, endElapseTime = 0;
+const util = require("./util"); //imported util.js
+let inputArr = []; //to take input from user
+let ElapseTimeArr = []; //to store elapse time for all methods
+let startElapseTime = 0, endElapseTime = 0; //to store start and end elapse time for each method
 
 function main() {
     console.log("Select option");
@@ -14,6 +14,7 @@ function main() {
     6. bubbleSort method for String
     7. exit
 `);
+}
     let option = 0;
     let suboption = 0;
     let standard_input = process.stdin;
@@ -21,7 +22,8 @@ function main() {
         if (data.toString().trim() === "exit") {
             process.exit();
         } else {
-            if (option == 1) {
+            //binarySearch method for integer
+            if (option == 1) { 
                 startElapseTime = new Date().getTime();
                 inputArr = data.toString().trim().split(' ');
                 console.log(inputArr);
@@ -41,12 +43,14 @@ function main() {
                 inputArr = [];
                 suboption = 0;
                 endElapseTime = new Date().getTime();
-                ElapseTimeArr.push(endElapseTime - startElapseTime);
-                console.log("Elapse Time:", endElapseTime - startElapseTime);
+                ElapseTimeArr.push(endElapseTime - startElapseTime); //pushing difference to ElapseTimeArr
+                console.log("Elapse Time:", endElapseTime - startElapseTime); //showing elapse time for this specific method
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else if (option == 2) {
+            } 
+            //binarySearch method for String
+            else if (option == 2) { 
                 startElapseTime = new Date().getTime();
                 inputArr = [];
                 inputArr = data.toString().trim().split(' ');
@@ -71,7 +75,9 @@ function main() {
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else if (option == 3) {
+            } 
+            //insertionSort method for integer
+            else if (option == 3) {
                 startElapseTime = new Date().getTime();
                 inputArr = data.toString().trim().split(' ');
                 if (util.Util.insertionSortForInt(inputArr) != 0) {
@@ -87,7 +93,9 @@ function main() {
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else if (option == 4) {
+            }
+            // insertionSort method for String
+            else if (option == 4) {
                 startElapseTime = new Date().getTime();
                 inputArr = data.toString().trim().split(' ');
                 if (util.Util.insertionSortForString(inputArr) != 0) {
@@ -97,12 +105,15 @@ function main() {
                 }
                 inputArr = [];
                 option = 0;
+                endElapseTime = new Date().getTime();
                 ElapseTimeArr.push(endElapseTime - startElapseTime);
                 console.log("Elapse Time:", endElapseTime - startElapseTime);
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else if (option == 5) {
+            }
+            // bubbleSort method for integer
+            else if (option == 5) {
                 startElapseTime = new Date().getTime();
                 inputArr = data.toString().trim().split(' ');
                 if (util.Util.bubbleSortForInt(inputArr) != 0) {
@@ -112,12 +123,15 @@ function main() {
                 }
                 inputArr = [];
                 option = 0;
+                endElapseTime = new Date().getTime();
                 ElapseTimeArr.push(endElapseTime - startElapseTime);
                 console.log("Elapse Time:", endElapseTime - startElapseTime);
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else if (option == 6) {
+            }
+            // bubbleSort method for String
+            else if (option == 6) {
                 startElapseTime = new Date().getTime();
                 inputArr = data.toString().trim().split(' ');
                 if (util.Util.bubbleSortForString(inputArr) != 0) {
@@ -127,12 +141,15 @@ function main() {
                 }
                 inputArr = [];
                 option = 0;
+                endElapseTime = new Date().getTime();
                 ElapseTimeArr.push(endElapseTime - startElapseTime);
                 console.log("Elapse Time:", endElapseTime - startElapseTime);
                 startElapseTime = 0;
                 endElapseTime = 0;
                 main();
-            } else {
+            }
+            //to take option input from user 
+            else {
                 switch (data.toString().trim()) {
                     case "1":
                         console.clear();
@@ -165,7 +182,8 @@ function main() {
                         option = 6;
                         return;
                     default:
-                        console.log("Total Elapse Time:",ElapseTimeArr.sort(function name(a,b) {
+                        //showing elapse time for all methods in descending order
+                        console.log("Total Elapse Time:",ElapseTimeArr.sort(function (a,b) {
                             return b-a;
                         }));
                         process.exit();
@@ -173,5 +191,5 @@ function main() {
             }
         }
     });
-}
+
 main();

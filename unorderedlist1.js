@@ -171,6 +171,7 @@ class LinkedList {
     }
 }
 
+//created object of LinkedList
 const list = new LinkedList();
 
 fs.readFile(__dirname + "/some.txt", function (err, data) {
@@ -190,6 +191,7 @@ fs.readFile(__dirname + "/some.txt", function (err, data) {
     }
 });
 
+//method to write outputStr on file
 function writeOnFile(outputStr) {
     fs.writeFile(__dirname + "/output.txt", outputStr, function (err) {
         if (err) {
@@ -199,6 +201,7 @@ function writeOnFile(outputStr) {
         process.exit();
     });
 }
+
 console.log("Enter string to search:");
 standard_input.on("data", function (data) {
     if (data.toString().trim() === "exit") {

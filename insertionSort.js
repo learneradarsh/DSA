@@ -1,6 +1,6 @@
-const util = require('./util');
+const util = require('./util'); //imported util.js
 let standard_input = process.stdin;
-let inputArr = [];
+let inputArr = []; //to take input from user
 
 console.log("Enter string array elements separated by space to sort:");
 standard_input.on("data", function (data) {
@@ -8,6 +8,8 @@ standard_input.on("data", function (data) {
         process.exit();
     } else {
         inputArr = data.toString().trim().split(' ');
+        
+        //to do insertion sort inputArr string array
         if (util.Util.insertionSortForString(inputArr) != 0) {
             console.log("String Sorted Array", util.Util.insertionSortForString(inputArr));
         } else {

@@ -135,12 +135,12 @@ class OrderedList {
     }
 
     //method to print elements of list
-    printList(){
-        let curr=this.head;
-        let str="";
-        while(curr){
-            str = str+ curr.element + " ";
-            curr=curr.next;
+    printList() {
+        let curr = this.head;
+        let str = "";
+        while (curr) {
+            str = str + curr.element + " ";
+            curr = curr.next;
         }
         return str;
     }
@@ -166,6 +166,7 @@ fs.readFile(__dirname + "/inpnumber.txt", function (err, data) {
     console.log(list);
 });
 
+//method to write outputStr on file
 function writeOnFile(outputStr) {
     fs.writeFile(__dirname + "/outputNum.txt", outputStr, function (err) {
         if (err) {

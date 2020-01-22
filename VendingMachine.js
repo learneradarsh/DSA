@@ -1,14 +1,17 @@
 let standard_input = process.stdin;
 
 let i=0,totalNotes=0;
-let noteMutiples=[1000,500,100,50,10,5,2,1];
+let noteMutiples=[1000,500,100,50,10,5,2,1]; //stored available multiple of notes
 
+//method to calculate number of notes for user given amount
 function calculateNotes(amount){
     if(isNaN(amount)){
         return 0;
     }
     amount=parseInt(amount);
     if(amount>0){
+
+        //logic to check minimum number of notes
         if(amount>=noteMutiples[i]){
             let calcNotes=parseInt(amount/noteMutiples[i]);
             amount=parseInt(amount%noteMutiples[i]);
@@ -18,7 +21,9 @@ function calculateNotes(amount){
         i++;
         calculateNotes(amount);
         return parseInt(totalNotes);
-    }else{  
+    }else{ 
+
+        //when amount is less than or equal to zero
         return -1;
     }
 }

@@ -109,6 +109,7 @@ class Dequeue {
 
 }
 
+//created object of Dequeue class
 const deq = new Dequeue(20);
 
 console.log("Enter String to check it is palindrome or not");

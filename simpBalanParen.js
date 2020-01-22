@@ -1,7 +1,8 @@
 let standard_input = process.stdin;
-let inpArr = [];
-let openBracketCount = 0;
-let closeBracketCount = 0;
+let inpArr = []; //to take user input
+let openBracketCount = 0; //counter to count openbrackets
+let closeBracketCount = 0; //counter to close closebrackets
+
 class Stack {
   constructor(inpArr) {
     this.items = inpArr;
@@ -48,6 +49,7 @@ standard_input.on("data", function(data) {
       .toString()
       .trim()
       .split("");
+    //created object of Stack Class
     const stack = new Stack(inpArr);
     if (stack.isEmpty()) {
       console.log("stack is empty");
@@ -55,11 +57,12 @@ standard_input.on("data", function(data) {
       while (stack.size() != 0) {
         let poppedElement = stack.pop();
         if (poppedElement == ")") {
-          ++closeBracketCount;
+          ++closeBracketCount; //increasing counter for closebrackets
         } else if (poppedElement == "(") {
-          ++openBracketCount;
+          ++openBracketCount; //increasing counter for openbrackets
         }
       }
+      //logic to check expression is balanced or not
       if (openBracketCount == closeBracketCount) {
         console.log("expression is Balanced");
       } else {
