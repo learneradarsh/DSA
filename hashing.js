@@ -1,5 +1,5 @@
 const fs = require('fs');
-const util = require('./util');
+const OrderedList = require('./orderedlistUtil');
 let standard_input = process.stdin;
 
 class Hash {
@@ -14,28 +14,57 @@ class Hash {
     }
 
     search(n) {
-        n=parseInt(n);
+        n = parseInt(n);
         let hashIndex = this.hashFunc(n);
-        if(this.arr[hashIndex] != null && this.arr[hashIndex] == n){
-            return 1;
+        let list = new OrderedList();
+        list = this.arr[hashIndex];
+        if (list != null) {
+            if (list.search(n)) {
+                return 1;
+            }
         }
         return -1;
-        // while (this.arr[hashIndex] != null) {
-        //     if(this.arr[hashIndex]==n){
-        //         return this.arr[hashIndex];
-        //     }
-        //     ++hashIndex;
-        // }
     }
 
     setHash(n, index) {
+        let list = new OrderedList();
         n = parseInt(n);
         console.log("index", index, "value", n);
-        this.arr[index] = n;
+        list = this.arr[index];
+        if (list == null) {
+            let list = new OrderedList();
+            list.add(n);
+            this.arr[index] = list;
+        } else {
+            list.add(n);
+            this.arr[index] = list;
+
+        }
+    }
+
+    deleteHash(n) {
+        let list = new OrderedList();
+        n = parseInt(n);
+        let index = this.hashFunc(n);
+        list = this.arr[index];
+        if (list != null) {
+            list.remove(n);
+            this.arr[index] = list;
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     printHash() {
-        console.log(this.arr);
+        let list = new OrderedList();
+        let str = ""
+        for (let i = 0; i < this.arr.length; i++) {
+            if (list = this.arr[i]) {
+                str = str + list.printList() + "\n";
+            }
+        }
+        return str;
     }
 
 }
@@ -58,7 +87,15 @@ fs.readFile(__dirname + "/inpnumber.txt", function (err, data) {
         }
     }
 });
-
+function writeOnFile(outputStr) {
+    fs.writeFile(__dirname + "/outputNum.txt", outputStr, function (err) {
+        if (err) {
+            throw err;
+        }
+        console.log("Data written successfully");
+        process.exit();
+    });
+}
 console.log("Enter number to search:");
 standard_input.on("data", function (data) {
     if (data.toString().trim() === "exit") {
@@ -66,10 +103,13 @@ standard_input.on("data", function (data) {
     } else {
         if (hash.search(data.toString().trim()) != -1) {
             console.log("number found");
+            hash.deleteHash(data.toString().trim());
         } else {
+            let inp = data.toString().trim();
             console.log("number not found");
+            hash.setHash(inp, hash.hashFunc(inp));
+            // hash.printHash();
         }
-        hash.printHash();
-        process.exit();
+        writeOnFile(hash.printHash());
     }
 });
