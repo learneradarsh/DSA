@@ -44,8 +44,8 @@ const showMainMenu = () => {
                 });
                 break;
             case "2":
-                console.log("\nExising Address Books:")
-                console.log(adrBook.showAvailableAddressBook());
+                console.log("\nExising Address Books:");
+                adrBook.showAvailableAddressBook();
                 util.rl.question("\nEnter Book Name To Continue:", (fileName) => {
                     if (fileName.trim() == "" || !adrBook.isFileExist(fileName.trim())) {
                         console.log("Invalid file name");
@@ -68,7 +68,12 @@ const showMainMenu = () => {
         }
     });
 }
-const editMenu = () => {
+const editMenu = (inpfirstName) => {
+    for(let i=0;i<adrBook.addressBook.length;i++){
+        if(inpfirstName == adrBook.addressBook[i].firstName){
+            
+        }
+    }
     console.log(`
         1. Edit Last Name
         2. Edit Address
@@ -83,66 +88,108 @@ const editMenu = () => {
             case "1":
                 util.rl.question("Enter Last Name:", (inplastName) => {
                     if (pattern.lastName.test(inplastName)) {
-                        adrBook.setLastName(inplastName);
-                        util.rl.question("Enter Address:", (inpAddress) => {
-                            if (pattern.address.test(inpAddress)) {
-                                adrBook.setAddress(inpAddress);
-                                util.rl.question("Enter City:", (inpCity) => {
-                                    if (pattern.city.test(inpCity)) {
-                                        adrBook.setCity(inpCity);
-                                        util.rl.question("Enter State:", (inpState) => {
-                                            adrBook.setState(inpState);
-                                            util.rl.question("Enter Zipcode:", (inpZipcode) => {
-                                                if (pattern.zipcode.test(inpZipcode)) {
-                                                    adrBook.setZip(inpZipcode);
-                                                    util.rl.question("Enter Phone:", (inpPhone) => {
-                                                        if (pattern.phone.test(inpPhone)) {
-                                                            adrBook.setPhone(inpPhone);
-                                                            adrBook.updateContact(person);
-                                                        } else {
-                                                            console.log("Invalid input");
-                                                            person = new Person();
-                                                            editMenu();
-                                                        }
-                                                    });
-                                                } else {
-                                                    console.log("Invalid input");
-                                                    person = new Person();
-                                                    editMenu();
-                                                }
-                                            })
-                                        });
-                                    } else {
-                                        console.log("Invalid input");
-                                        person = new Person();
-                                        editMenu();
-                                    }
-                                });
-                            } else {
-                                console.log("Invalid input");
-                                person = new Person();
-                                editMenu();
-                            }
-                        });
+                        person.setLastName(inplastName);
+                        if(adrBook.updateContact(inplastName, "LastName",inpfirstName) != -1){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
                     } else {
                         console.log("Invalid input");
-                        person = new Person();
                         editMenu();
                     }
                 });
                 break;
             case "2":
+                util.rl.question("Enter Address:", (inpAddress) => {
+                    if (pattern.address.test(inpAddress)) {
+                        person.setAddress(inpAddress);
+                        if(adrBook.updateContact(person, "Address") != -1){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
+                    } else {
+                        console.log("Invalid input");
+                        editMenu();
+                    }
+                });
                 break;
             case "3":
+                util.rl.question("Enter City", (inpCity) => {
+                    if (pattern.city.test(inpCity)) {
+                        person.setCity(inpCity);
+                        if(adrBook.updateContact(person, "City") != -1){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
+                    } else {
+                        console.log("Invalid input");
+                        editMenu();
+                    }
+                });
                 break;
             case "4":
+                util.rl.question("Enter State", (inpState) => {
+                    if (pattern.state.test(inpState)) {
+                        person.setState(inpState);
+                        if(adrBook.updateContact(person, "State") != -1){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
+                    } else {
+                        console.log("Invalid input");
+                        editMenu();
+                    }
+                });
                 break;
             case "5":
+                util.rl.question("Enter Zipcode", (inpZipcode) => {
+                    if (pattern.zipcode.test(inpZipcode)) {
+                        person.setZip(inpZipcode);
+                        if(adrBook.updateContact(person, "Zipcode") != -1){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
+                    } else {
+                        console.log("Invalid input");
+                        editMenu();
+                    }
+                });
                 break;
             case "6":
+                util.rl.question("Enter Phone", (inpPhone) => {
+                    if (pattern.phone.test(inpPhone)) {
+                        person.setPhone(inpPhone);
+                        if(adrBook.updateContact(person, "Phone") != -1 ){
+                            console.log("Data Updated Successfully, Please Save Before Exit");
+                            subMenu();
+                        }else{
+                            console.log("Not able to update data, Some error occured");
+                            editMenu();
+                        }
+                    } else {
+                        console.log("Invalid input");
+                        editMenu();
+                    }
+                });
                 break;
             case "7":
                 subMenu();
+                break;
             default:
                 console.log("invalid input");
                 editMenu();
@@ -245,8 +292,8 @@ const subMenu = () => {
                 break;
             case "3":
                 util.rl.question("Enter First Name To Edit Data:", (inpfirstName) => {
-                    if (pattern.firstName.test(inpfirstName) && adrBook.isUserExist(firstName) != -1) {
-                        editMenu();
+                    if (pattern.firstName.test(inpfirstName) && adrBook.isUserExist(inpfirstName) != -1) {
+                        editMenu(inpfirstName);
                     } else {
                         console.log("Invalid Data");
                         subMenu();
@@ -259,9 +306,11 @@ const subMenu = () => {
                 subMenu();
                 break;
             case "5":
+                adrBook.sortContactByName(currentAddressBook);
                 console.log("sort by name");
                 break;
             case "6":
+                adrBook.sortContactByZip(currentAddressBook);
                 console.log("sort by zipcode");
                 break;
             case "7":

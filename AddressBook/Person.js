@@ -1,3 +1,4 @@
+
 /**
  * Person class having all required properties.
  * @class
@@ -14,34 +15,6 @@ class Person {
         this.zipcode = this.zipcode;
         this.phone = this.phone;
     }
-    
-    // getFirstName(firstName){
-    //    return firstName; 
-    // }
-
-    // getLastName(lastName){
-    //     return lastName;
-    // }
-
-    // getAddress(address){
-    //     return address;
-    // }
-
-    // getCity(city){
-    //     return city;
-    // }
-
-    // getState(state){
-    //     return state;
-    // }
-
-    // getZip(zipcode){
-    //     return zipcode;
-    // }
-
-    // getPhone(phone){
-    //     return phone;
-    // }
 
     setFirstName(firstName){
         this.firstName = firstName; 
