@@ -8,13 +8,18 @@ class Hash {
         this.arr = [];
     }
 
-    //method to find key for hashmap
+    /**
+     * method to find key for hashmap
+     * @param  {n} n denotes number given by user
+     */
     hashFunc(n) {
         n = parseInt(n);
         return parseInt(n % 11);
     }
-
-    //method to find number n in a hashmap
+    /**
+     * method to find number n in a hashmap
+     * @param  {} n
+     */
     search(n) {
         n = parseInt(n);
         let hashIndex = this.hashFunc(n);
@@ -27,8 +32,11 @@ class Hash {
         }
         return -1;
     }
-
-    //method to insert n on specific index in hashmap
+    /**
+     * method to insert n on specific index in hashmap
+     * @param  {} n
+     * @param  {} index
+     */
     setHash(n, index) {
         let list = new OrderedList();
         n = parseInt(n);
@@ -44,8 +52,10 @@ class Hash {
 
         }
     }
-
-    //method to delete n from hashmap
+    /**
+     * method to delete n from hashmap
+     * @param  {} n
+     */
     deleteHash(n) {
         let list = new OrderedList();
         n = parseInt(n);
@@ -60,7 +70,9 @@ class Hash {
         }
     }
 
-    //method to print hashmap
+    /**
+     * method to print hashmap
+     */
     printHash() {
         let list = new OrderedList();
         let str = ""
@@ -73,7 +85,10 @@ class Hash {
     }
 
 }
-//created object Hash class
+
+/**
+ * created object Hash class
+ */
 const hash = new Hash();
 
 fs.readFile(__dirname + "/inpnumber.txt", function (err, data) {
@@ -93,7 +108,10 @@ fs.readFile(__dirname + "/inpnumber.txt", function (err, data) {
     }
 });
 
-//method to do file write operation for outputStr 
+/**
+ * method to do file write operation for outputStr 
+ * @param  {} outputStr
+ */
 function writeOnFile(outputStr) {
     fs.writeFile(__dirname + "/outputNum.txt", outputStr, function (err) {
         if (err) {
