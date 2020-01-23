@@ -2,7 +2,10 @@ const util = require("./util"); //imported util.js
 let primeArr = [[]]; //2D array to store primeArr
 let primeSubArr = [];
 
-//function to print Prime numbers 2D array
+/**
+ * @function
+ * function to print Prime numbers 2D array
+ */
 function printPrimeArr() {
     for (let i = 1; i <= 10; i++) {
         let str = `${(i * 100 - 99)} - ${(i * 100)}`;
