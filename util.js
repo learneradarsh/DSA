@@ -1,6 +1,10 @@
 class Util {
 
-    //static method to find two input given strings are anagram or not
+    /**
+     * @param  {} stringOne
+     * @param  {} stringTwo
+     * static method to find two input given strings are anagram or not
+     */
     static isAnagram(stringOne, stringTwo) {
         stringOne = stringOne.toString();
         stringTwo = stringTwo.toString();
@@ -17,7 +21,10 @@ class Util {
         return true;
     }
 
-    //static method to find prime number between 0-1000
+    /**
+     * @param  {} number
+     * static method to find prime number between 0-1000
+     */
     static isPrime(number) {
         number = Number(number);
         if (!isNaN(number)) {
@@ -37,7 +44,11 @@ class Util {
 
     }
 
-    //static method to find input given numbers are prime or not
+    /**
+     * @param  {} numberOne
+     * @param  {} numberTwo
+     * static method to find input given numbers are prime or not
+     */
     static isPalindrome(numberOne, numberTwo) {
         numberOne = numberOne.toString();
         numberTwo = numberTwo.toString();
@@ -47,7 +58,11 @@ class Util {
         return false;
     }
 
-    //static method to find prime numbers that are anagram and palindrome
+    /**
+     * @param  {} numberOne
+     * @param  {} numberTwo
+     * static method to find prime numbers that are anagram and palindrome
+     */
     static isAnagramAndPalindrome(numberOne, numberTwo) {
         numberOne = Number(numberOne);
         numberTwo = Number(numberTwo);
@@ -61,15 +76,20 @@ class Util {
         return false;
     }
 
-    //static method to do binary search for integer
+    /**
+     * @param  {} inp
+     * @param  {} inpArray
+     * static method to do binary search for integer
+     */
     static binarySearchForInt(inp, inpArray) {
-        let i=0;
-        let lenOne=inpArray.length;
-        while(i<lenOne){
-            if(isNaN(inpArray[i]) || isNaN(inp)){
+        let i = 0;
+        let lenOne = inpArray.length;
+        while (i < lenOne) {
+            if (isNaN(inpArray[i]) || isNaN(inp)) {
                 return 2;
-            }else{
-            inpArray[i]=parseInt(inpArray[i]);}
+            } else {
+                inpArray[i] = parseInt(inpArray[i]);
+            }
             i++;
         }
         inp = parseInt(inp);
@@ -88,12 +108,15 @@ class Util {
         }
         return false;
     }
-
-    //static method to do binary search for string
+    /**
+     * @param  {} inpStr
+     * @param  {} strArray
+     * static method to do binary search for string
+     */
     static binarySearchForString(inpStr, strArray) {
-        let i=0;
-        while(i<strArray.length){
-            if(!isNaN(strArray[i]) || !isNaN(inpStr)){
+        let i = 0;
+        while (i < strArray.length) {
+            if (!isNaN(strArray[i]) || !isNaN(inpStr)) {
                 return 2;
             }
             i++;
@@ -139,7 +162,11 @@ class Util {
         return inpArray;
     }
 
-    //static method to do insertion sort for string
+    
+    /**
+     * @param  {} inpArray
+     * static method to do insertion sort for string
+     */
     static insertionSortForString(inpArray) {
         let i, key, j, size;
         i = 1;
@@ -163,7 +190,11 @@ class Util {
         return inpArray;
     }
 
-    //static method to do bubble sort for integer
+    
+    /**
+     * @param  {} inpArray
+     * static method to do bubble sort for integer
+     */
     static bubbleSortForInt(inpArray) {
         let len, i, j, stop, temp;
         len = inpArray.length;
@@ -186,7 +217,11 @@ class Util {
         return inpArray;
     }
 
-    //static method to do bubble sort for string
+    
+    /**
+     * @param  {} inpArray
+     * static method to do bubble sort for string
+     */
     static bubbleSortForString(inpArray) {
         let len, i, j, stop, temp;
         len = inpArray.length;
