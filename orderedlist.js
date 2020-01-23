@@ -1,19 +1,31 @@
 const fs = require("fs");
 let standard_input = process.stdin;
 
+/**
+ * @class
+ * @classdesc Having Node structure.
+ */
 class Node {
     constructor(element) {
         this.element = element;
         this.next = null;
     }
 }
+
+/**
+ * @class
+ * @classdesc Having methods for Ordered List to perform add, remove, isEmpty, size, search, printList and pop.
+ */
 class OrderedList {
     constructor() {
         this.head = null;
         this.size = 0;
     }
 
-    //to add element in ol - orderedlist
+    /**
+     * to add element in ol - orderedlist
+     * @param  {} element
+     */
     add(element) {
         let node = new Node(element);
         let current = null;
@@ -30,8 +42,10 @@ class OrderedList {
         }
         this.size++;
     }
-
-    //to remove element from ol
+    /**
+     * to remove element from ol
+     * @param  {} element
+     */
     remove(element) {
         let current = this.head;
         let prev = null;
@@ -49,7 +63,9 @@ class OrderedList {
         return -1;
     }
 
-    //to check ol is empty or not
+    /**
+     * to check ol is empty or not
+     */
     isEmpty() {
         if (this.head == null || this.size == 0) {
             return true;
@@ -58,12 +74,17 @@ class OrderedList {
         }
     }
 
-    //to check size of ol
+    /**
+     * to check size of ol
+     */
     size() {
         return this.size;
     }
 
-    //to check position of element in ol
+    /**
+     * to check position of element in ol
+     * @param  {} element
+     */
     index(element) {
         let count = 0;
         let current = this.head;
@@ -76,7 +97,9 @@ class OrderedList {
         }
     }
 
-    //to remove last element from ol
+    /**
+     * to remove last element from ol
+     */
     pop() {
         let current = this.head;
         let prev = null;
@@ -93,8 +116,11 @@ class OrderedList {
         }
         return -1;
     }
-
-    //to remove and return element at position pos
+    
+    /**
+     * to remove and return element at position pos
+     * @param  {} pos
+     */
     pop(pos) {
         if (pos > 0 && pos > this.size) {
             return false;
@@ -121,8 +147,11 @@ class OrderedList {
             return curr.element;
         }
     }
-
-    //method to search element in list
+    
+    /**
+     * method to search element in list
+     * @param  {} element
+     */
     search(element) {
         let current = this.head;
         while (current != null) {
@@ -133,8 +162,10 @@ class OrderedList {
         }
         return false;
     }
-
-    //method to print elements of list
+    
+    /**
+     * method to print elements of list
+     */
     printList() {
         let curr = this.head;
         let str = "";
