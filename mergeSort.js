@@ -1,9 +1,17 @@
 let standard_input = process.stdin;
 let inpArr=[]; //to take input from user
 
+/**
+ * @class
+ * @classdesc Having static methods for merge sort and merge left and right arrays.
+ */
 class MergeSort {
 
-    //method to merge arrays
+    /**
+     * method to merge arrays
+     * @param  {} left
+     * @param  {} right
+     */
     static merge(left, right) {
         let resArr = [], leftIn = 0, rightIn = 0;
 
@@ -19,8 +27,11 @@ class MergeSort {
 
         return resArr.concat(left.slice(leftIn)).concat(right.slice(rightIn));
     }
-
-    //method to perform merge sort on inpArr
+    
+    /**
+     * method to perform merge sort on inpArr
+     * @param  {} inpArr
+     */
     static mergeSort(inpArr) {
         if (inpArr.length <= 1) {
             return inpArr;
