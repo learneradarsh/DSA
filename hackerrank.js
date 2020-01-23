@@ -5,7 +5,11 @@ class BSTCount {
     constructor() {
         this.n = 0;
     }
-    //method to find factorial of n
+    //
+    /**
+     * method to find factorial of n
+     * @param  {n} n denotes here number given by user
+     */
     fact(n) {
         let f = 1;
         for (let i = 1; i <= n; i++) {
@@ -13,7 +17,11 @@ class BSTCount {
         }
         return f;
     }
-    //method to find number of BSTs we can make for n nodes
+    
+    /**
+     * method to find number of BSTs we can make for n nodes
+     * @param  {n} n denotes here nnumber given by user
+     */
     countBST(n) {
 
         //finding Cn using Catalan number formula
