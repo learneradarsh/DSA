@@ -1,7 +1,10 @@
 let standard_input = process.stdin;
 
 class Queue {
-    constructor(maxSize) { // maxSize denotes size of queueu
+    /**
+     * @param  {maxSize denotes size of queueu} maxSize
+     */
+    constructor(maxSize) { // 
         this.front = 0;
         this.rear = 0;
         this.maxSize = maxSize;
