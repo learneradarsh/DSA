@@ -1,7 +1,15 @@
 let standard_input = process.stdin;
 
+/**
+ * @class
+ * @classdesc Having methods and constructor for Dequeue data structure.
+ */
 class Dequeue {
-
+    
+    /**
+     * constructor for dequeue data structure
+     * @param  {} maxSize
+     */
     constructor(maxSize) {
         this.front = -1;
         this.rear = 0;
@@ -9,8 +17,10 @@ class Dequeue {
         // this.queue = new Array(maxSize);
         this.queue = [];
     }
-
-    //method to check dequeue is full or not
+    
+    /**
+     * method to check dequeue is full or not
+     */
     isFull() {
         return ((this.front == 0 && this.rear == this.maxSize - 1) ||
             this.front == this.rear + 1);
@@ -23,8 +33,11 @@ class Dequeue {
         }
         return false;
     }
-
-    //method to add item in front
+    
+    /**
+     * method to add item in front
+     * @param  {} item
+     */
     addFront(item) {
         if (this.isFull()) {
             return -1;
@@ -40,7 +53,11 @@ class Dequeue {
         this.queue[this.front] = item;
     }
 
-    //method to add item to read
+    
+    /**
+     * method to add item to read
+     * @param  {} item
+     */
     addRear(item) {
         if (this.isFull()) {
             return -1;
@@ -56,7 +73,9 @@ class Dequeue {
         this.queue[this.rear] = item;
     }
 
-    //method to remove item from front
+    /**
+     * method to remove item from front
+     */
     removeFront() {
         let retVal;
         if (this.isEmpty()) {
@@ -78,7 +97,10 @@ class Dequeue {
         return retVal;
     }
 
-    //method to remove item from read
+    
+    /**
+     * method to remove item from read
+     */
     removeRear() {
         let retVal;
         if (this.isEmpty()) {
@@ -96,13 +118,17 @@ class Dequeue {
         }
         return retVal;
     }
-
-    //method to check the size of dequeue
+    
+    /**
+     * method to check the size of dequeue
+     */
     size() {
         return this.queue.length;
     }
-
-    //method to print dequeu
+    
+    /**
+     * method to print dequeu
+     */
     printdeq() {
         console.log(this.queue);
     }
