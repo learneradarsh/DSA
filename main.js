@@ -3,6 +3,9 @@ let inputArr = []; //to take input from user
 let ElapseTimeArr = []; //to store elapse time for all methods
 let startElapseTime = 0, endElapseTime = 0; //to store start and end elapse time for each method
 
+/**
+ * to show main menu to user
+ */
 function main() {
     console.log("Select option");
     console.log(`
