@@ -7,7 +7,9 @@ class Calendar {
     this.year = year;
   }
 
-  //method to validate user given input month and year
+  /**
+   * method to validate user given input month and year
+   */
   validateInput() {
     if (
       isNaN(this.month) ||
@@ -21,7 +23,11 @@ class Calendar {
     this.year = parseInt(this.year);
   }
 
-  //method to get the month name in words
+  
+  /**
+   * method to get the month name in words
+   * @param  {} month
+   */
   getMonthName(month) {
     switch (month) {
       case 1:
@@ -53,7 +59,11 @@ class Calendar {
     }
   }
 
-  //method to find year is leap or not
+  
+  /**
+   * method to find year is leap or not
+   * @param  {} year
+   */
   isLeapYear(year) {
     if (year % 4 == 0) {
       if (year % 100 == 0) {
@@ -70,7 +80,12 @@ class Calendar {
     }
   }
 
-  //method to find get days in a month
+  
+  /**
+   * method to find get days in a month
+   * @param  {} month
+   * @param  {} year
+   */
   getDaysInMonth(month, year) {
     let daysInMonth = null;
     if (this.isLeapYear(year) && month == 2) {
@@ -81,17 +96,20 @@ class Calendar {
     return daysInMonth;
   }
 
-  //method to print head section of calendar
+  /**
+   * method to print head section of calendar
+   */
   printHead() {
     console.log(
       `% javascript Calendar ${this.month} ${this.year} - ${this.getMonthName(
         this.month
       )} ${this.year}`
     );
-    // console.log("Sun Mon Tue Wed Thu Fri Sat");
   }
-
-  //method to get first day of the month by using Gregorian calendar formula
+  
+  /**
+   * method to get first day of the month by using Gregorian calendar formula
+   */
   getFirstDay() {
     let yZero = parseInt(this.year - Math.floor((14 - this.month) / 12));
     let x = parseInt(yZero + Math.floor(yZero / 4) - Math.floor(yZero / 100) + Math.floor(yZero / 400));
@@ -102,7 +120,9 @@ class Calendar {
     return parseInt(day);
   }
 
-  //method to print body section of calendar
+  /**
+   * method to print body section of calendar
+   */
   printCalendar() {
     this.printHead();
     let firstDay = this.getFirstDay();
