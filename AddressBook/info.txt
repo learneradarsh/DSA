@@ -1,0 +1,32 @@
+// fname, lname, address, city, state, zipcode, phonenumber
+// add new person
+// edit existing information about a person
+// delete a person
+// add address book
+// Sort Address Book Alphabetically by lastname
+// Sort Address Book by zipcode
+
+
+
+/**Display Preview */
+//1. Add Address Book
+//2. Show Address Book  
+//3. Exit From Application
+
+//Add Address Book
+//Enter Name of Address Book: 
+
+
+
+
+//Show Address Book
+
+//list of address books
+//user will choose one address book
+// Add Contact
+// Edit Contact
+// Delete Contact
+// Save Contact
+// Sort by last name
+// Sort by zipcode
+// Exit to previous menu
