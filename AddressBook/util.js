@@ -17,28 +17,15 @@ const readFile = fileName => {
 };
 
 const writeFile = (outputStr, fileName) => {
-  let allAvailableFiles = showAllJSONFiles();
-  let isFilePresent = false;
-  for (let file in allAvailableFiles) {
-    if (file in allAvailableFiles) {
-      if (fileName == allAvailableFiles[file]) {
-        console.log("file exist");
-        isFilePresent = true;
-        return true;
+  fs.writeFile(
+    __dirname + "/records/" + fileName + ".json",
+    JSON.stringify(outputStr),
+    function(err) {
+      if (err) {
+        throw err;
       }
     }
-  }
-  if (isFilePresent == false) {
-    fs.writeFile(
-      __dirname + "/records/" + fileName + ".json",
-      JSON.stringify(outputStr),
-      function(err) {
-        if (err) {
-          throw err;
-        }
-      }
-    );
-  }
+  );
 };
 
 const showAllJSONFiles = () => {

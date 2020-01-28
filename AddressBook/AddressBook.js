@@ -8,11 +8,7 @@ class AddressBook {
   }
 
   addAddressBook(fileName) {
-    if(util.writeFile("", fileName) == true){
-      return false; // file already exists
-    }else{
-      return true;
-    }
+    util.writeFile("", fileName);
   }
   addContact(person) {
     this.addressBook.push(person);
@@ -41,15 +37,13 @@ class AddressBook {
     }
     return -1;
   }
-  sortContactByName(currentAddressBook) {
-    let sortedContactsByName = this.addressBook.map(item => {
-      return item.sort();
-    });
-
-    return sortedContactsByName;
+  sortContactByName() {
+    return this.addressBook.sort();
   }
 
-  sortContactByZip(currentAddressBook) {}
+  sortContactByZip() {
+    return this.addressBook.sort((a,b)=> { return a-b; })
+  }
 
   removeContact(firstName) {
     for (let i = 0; i < this.addressBook.length; i++) {

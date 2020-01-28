@@ -37,9 +37,8 @@ const showMainMenu = () => {
                     if (fileName.trim() == "") {
                         console.log("Invalid file name");
                     } else {
-                        if(adrBook.addAddressBook(fileName.trim()) != false){
-                            console.log(`${fileName} created successfully`);
-                        }
+                        adrBook.addAddressBook(fileName.trim());
+                        console.log(`${fileName} created successfully`); 
                     }
                     showMainMenu();
                 });
@@ -236,6 +235,7 @@ const subMenu = () => {
                                                                         person.setPhone(inpPhone);
                                                                         adrBook.addContact(person);
                                                                         console.log("Contact Added Successfully, Please save before exit.");
+                                                                        person = new Person();
                                                                         subMenu();
                                                                     } else {
                                                                         console.log("Invalid Entry");
@@ -307,12 +307,14 @@ const subMenu = () => {
                 subMenu();
                 break;
             case "5":
-                adrBook.sortContactByName(currentAddressBook);
-                console.log("sort by name");
+                console.log(adrBook.sortContactByName());
+                subMenu();
+                // console.log("sort by name");
                 break;
             case "6":
-                adrBook.sortContactByZip(currentAddressBook);
-                console.log("sort by zipcode");
+                console.log(adrBook.sortContactByZip());
+                subMenu();
+                // console.log("sort by zipcode");
                 break;
             case "7":
                 console.log("Current Contacts in Address Book");
