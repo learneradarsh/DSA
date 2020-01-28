@@ -86,22 +86,22 @@ const subMenu = () => {
         util.rl.question("Enter First Name:", inpfirstName => {
           if (pattern.firstName.test(inpfirstName)) {
             person.setFirstName(inpfirstName);
-            util.rl.question("Enter Last Name", inplastName => {
+            util.rl.question("Enter Last Name:", inplastName => {
               if (pattern.lastName.test(inplastName)) {
                 person.setLastName(inplastName);
-                util.rl.question("Enter Address", inpAddress => {
+                util.rl.question("Enter Address:", inpAddress => {
                   if (pattern.address.test(inpAddress)) {
                     person.setAddress(inpAddress);
-                    util.rl.question("Enter City", inpCity => {
+                    util.rl.question("Enter City:", inpCity => {
                       if (pattern.city.test(inpCity)) {
                         person.setCity(inpCity);
-                        util.rl.question("Enter State", inpState => {
+                        util.rl.question("Enter State:", inpState => {
                           if (pattern.state.test(inpState)) {
                             person.setState(inpState);
-                            util.rl.question("Enter Zipcode", inpZipcode => {
+                            util.rl.question("Enter Zipcode:", inpZipcode => {
                               if (pattern.zipcode.test(inpZipcode)) {
                                 person.setZip(inpZipcode);
-                                util.rl.question("Enter Phone", inpPhone => {
+                                util.rl.question("Enter Phone:", inpPhone => {
                                   if (pattern.phone.test(inpPhone)) {
                                     person.setPhone(inpPhone);
                                     if (adrBook.addContact(person) == false) {
