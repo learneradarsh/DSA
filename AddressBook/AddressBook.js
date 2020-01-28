@@ -19,8 +19,6 @@ class AddressBook {
     }
   }
 
-  isContactExist() {}
-
   /**
    * @param  {} person
    */
@@ -37,27 +35,19 @@ class AddressBook {
    * @param  {} person
    * @param  {} type
    */
-  updateContact(person, type) {
-    // console.log(value,type,this.addressBook.length,inpfirstName);
-    for (let i = 0; i < this.addressBook.length; i++) {
-      if (person.firstName == this.addressBook[i].firstName) {
-        if (type == "LastName") {
-          this.addressBook[i].lastName = person.lastName;
-        } else if (type == "Address") {
-          this.addressBook[i].address = person.address;
-        } else if (type == "City") {
-          this.addressBook[i].city = person.city;
-        } else if (type == "State") {
-          this.addressBook[i].state = person.state;
-        } else if (type == "Zipcode") {
-          this.addressBook[i].zipcode = person.zipcode;
-        } else if (type == "Phone") {
-          this.addressBook[i].phone = person.phone;
-        }
-        return 1;
+  updateContact(person,inpfirstName) {
+    for (let i = 0; i < this.addressBook.length; i++) { 
+      if(inpfirstName === this.addressBook[i].firstName){
+        this.addressBook[i].firstName = inpfirstName;
+        this.addressBook[i].lastName = person.lastName;
+        this.addressBook[i].address = person.address;
+        this.addressBook[i].city = person.city;
+        this.addressBook[i].state = person.state;
+        this.addressBook[i].zipcode = person.zipcode;
+        this.addressBook[i].phone = person.phone;
+        // return true;
       }
     }
-    return -1;
   }
 
   sortContactByName() {
@@ -104,11 +94,10 @@ class AddressBook {
   isUserExist(firstName) {
     for (let i = 0; i < this.addressBook.length; i++) {
       if (firstName == this.addressBook[i].firstName) {
-        this.addressBook.splice(i, 1);
-        return 1;
+        return true;
       }
     }
-    return -1;
+    return false;
   }
 
   /**

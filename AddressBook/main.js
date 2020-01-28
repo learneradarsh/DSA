@@ -66,135 +66,7 @@ const showMainMenu = () => {
     }
   });
 };
-const editMenu = inpfirstName => {
-  for (let i = 0; i < adrBook.addressBook.length; i++) {
-    if (inpfirstName == adrBook.addressBook[i].firstName) {
-    }
-  }
-  console.log(`
-        1. Edit Last Name
-        2. Edit Address
-        3. Edit City
-        4. Edit State
-        5. Edit Zipcode
-        6. Edit Phone
-        7. Go to Previous Menu
-    `);
-  util.rl.question("Select Your Option:", option => {
-    switch (option) {
-      case "1":
-        util.rl.question("Enter Last Name:", inplastName => {
-          if (pattern.lastName.test(inplastName)) {
-            person.setLastName(inplastName);
-            if (
-              adrBook.updateContact(inplastName, "LastName", inpfirstName) != -1
-            ) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "2":
-        util.rl.question("Enter Address:", inpAddress => {
-          if (pattern.address.test(inpAddress)) {
-            person.setAddress(inpAddress);
-            if (adrBook.updateContact(person, "Address") != -1) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "3":
-        util.rl.question("Enter City", inpCity => {
-          if (pattern.city.test(inpCity)) {
-            person.setCity(inpCity);
-            if (adrBook.updateContact(person, "City") != -1) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "4":
-        util.rl.question("Enter State", inpState => {
-          if (pattern.state.test(inpState)) {
-            person.setState(inpState);
-            if (adrBook.updateContact(person, "State") != -1) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "5":
-        util.rl.question("Enter Zipcode", inpZipcode => {
-          if (pattern.zipcode.test(inpZipcode)) {
-            person.setZip(inpZipcode);
-            if (adrBook.updateContact(person, "Zipcode") != -1) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "6":
-        util.rl.question("Enter Phone", inpPhone => {
-          if (pattern.phone.test(inpPhone)) {
-            person.setPhone(inpPhone);
-            if (adrBook.updateContact(person, "Phone") != -1) {
-              console.log("Data Updated Successfully, Please Save Before Exit");
-              subMenu();
-            } else {
-              console.log("Not able to update data, Some error occured");
-              editMenu();
-            }
-          } else {
-            console.log("Invalid input");
-            editMenu();
-          }
-        });
-        break;
-      case "7":
-        subMenu();
-        break;
-      default:
-        console.log("invalid input");
-        editMenu();
-    }
-  });
-};
+
 const subMenu = () => {
   console.log(`
         1. Add Contact
@@ -302,9 +174,66 @@ const subMenu = () => {
         util.rl.question("Enter First Name To Edit Data:", inpfirstName => {
           if (
             pattern.firstName.test(inpfirstName) &&
-            adrBook.isUserExist(inpfirstName) != -1
+            adrBook.isUserExist(inpfirstName) != false
           ) {
-            editMenu(inpfirstName);
+            util.rl.question("Enter Last Name:",inplastName => {
+                if(pattern.lastName.test(inplastName)){
+                    person.setLastName(inplastName);
+                    util.rl.question("Enter Address:",inpAddress => {
+                        if(pattern.address.test(inpAddress)){
+                            person.setAddress(inpAddress);
+                            util.rl.question("Enter City:",inpCity => {
+                                if(pattern.city.test(inpCity)){
+                                    person.setCity(inpCity);
+                                    util.rl.question("Enter State:",inpState =>{
+                                        if(pattern.state.test(inpState)){
+                                            person.setState(inpState);
+                                            util.rl.question("Enter Zipcode:",inpZipcode=>{
+                                                if(pattern.zipcode.test(inpZipcode)){
+                                                    person.setZip(inpZipcode);
+                                                    util.rl.question("Enter Phone:",inpPhone=>{
+                                                        if(pattern.phone.test(inpPhone)){
+                                                            person.setPhone(inpPhone);
+                                                            adrBook.updateContact(person,inpfirstName);
+                                                            console.log("Updated Contact Successfully");
+                                                            person = new Person();
+                                                            subMenu();
+                                                        }else{
+                                                            console.log("Invalid Entry");
+                                                            person = new Person();
+                                                            subMenu();
+                                                        }
+                                                    });
+                                                }else{
+                                                    console.log("Invalid Entry");
+                                                    person = new Person();
+                                                    subMenu();
+                                                }
+                                            });
+                                        }else{
+                                            console.log("Invalid Entry");
+                                            person = new Person();
+                                            subMenu();
+                                        }
+                                    });
+                                }else{
+                                    console.log("Invalid Entry");
+                                    person = new Person();
+                                    subMenu();
+                                }
+                            });
+                        }else{
+                            console.log("Invalid Entry");
+                            person = new Person();
+                            subMenu();
+                        }
+                    });
+                }else{
+                    console.log("Invalid Entry");
+                    person = new Person();
+                    subMenu();
+                }
+            });
           } else {
             console.log("Invalid Data");
             subMenu();
