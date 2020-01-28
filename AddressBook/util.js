@@ -12,7 +12,7 @@ const readFile = fileName => {
     __dirname + "/records/" + fileName + ".json",
     "utf8"
   );
-  return data;
+  return JSON.parse(data);
 };
 
 const isFileExist = (fileName) => {

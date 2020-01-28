@@ -7,6 +7,9 @@ class AddressBook {
     this.addressBook = [];
   }
 
+  /**
+   * @param  {} fileName
+   */
   addAddressBook(fileName) {
     if (util.isFileExist(fileName)) {
       return "File already exist";
@@ -16,11 +19,24 @@ class AddressBook {
     }
   }
 
+  isContactExist() {}
+
+  /**
+   * @param  {} person
+   */
   addContact(person) {
+    for(let i=0;i<this.addressBook.length;i++){
+      if(person.firstName === this.addressBook[i].firstName ){
+        return false; // contact already exist
+      }
+    }
     this.addressBook.push(person);
   }
 
-  //to edit user info
+  /**
+   * @param  {} person
+   * @param  {} type
+   */
   updateContact(person, type) {
     // console.log(value,type,this.addressBook.length,inpfirstName);
     for (let i = 0; i < this.addressBook.length; i++) {
@@ -43,6 +59,7 @@ class AddressBook {
     }
     return -1;
   }
+
   sortContactByName() {
     return this.addressBook.sort();
   }
@@ -53,6 +70,9 @@ class AddressBook {
     });
   }
 
+  /**
+   * @param  {} firstName
+   */
   removeContact(firstName) {
     for (let i = 0; i < this.addressBook.length; i++) {
       if (firstName == this.addressBook[i].firstName) {
@@ -63,17 +83,24 @@ class AddressBook {
     return -1;
   }
 
-  //to save contact
+  /**
+   * @param  {} currentAddressBook
+   */
   saveContact(currentAddressBook) {
     util.writeFile(this.addressBook, currentAddressBook);
   }
 
-  //to show all available address books
+  /**
+   * to show all available address books
+   */
   showAvailableAddressBook() {
     console.log(util.showAllJSONFiles());
   }
 
-  //to check user exists or not
+  /**
+   * to check user exists or not
+   * @param  {} firstName
+   */
   isUserExist(firstName) {
     for (let i = 0; i < this.addressBook.length; i++) {
       if (firstName == this.addressBook[i].firstName) {
@@ -84,7 +111,10 @@ class AddressBook {
     return -1;
   }
 
-  //to check file is there or not
+  /**
+   * to check file is there or not
+   * @param  {} fileName
+   */
   isFileExist(fileName) {
     let fileArr = util.showAllJSONFiles();
     for (let i in fileArr) {
@@ -95,7 +125,10 @@ class AddressBook {
     return false;
   }
 
-  //to show speicific address book data
+  /**
+   * to show speicific address book data
+   * @param  {} fileName
+   */
   loadAddressBook(fileName) {
     for (let d of util.readFile(fileName)) {
       this.addressBook.push(d);
