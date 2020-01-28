@@ -37,8 +37,7 @@ const showMainMenu = () => {
                     if (fileName.trim() == "") {
                         console.log("Invalid file name");
                     } else {
-                        adrBook.addAddressBook(fileName.trim());
-                        console.log(`${fileName} created successfully`); 
+                        console.log(adrBook.addAddressBook(fileName.trim())); 
                     }
                     showMainMenu();
                 });

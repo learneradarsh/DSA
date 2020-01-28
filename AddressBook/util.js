@@ -12,9 +12,19 @@ const readFile = fileName => {
     __dirname + "/records/" + fileName + ".json",
     "utf8"
   );
-  console.log("readfile:", data);
-  return JSON.parse(data);
+  return data;
 };
+
+const isFileExist = (fileName) => {
+  let existingFiles = showAllJSONFiles();
+  for(let file in existingFiles){
+    if(fileName === existingFiles[file]){
+      return true;
+      break;
+    }
+  }
+  return false;
+}
 
 const writeFile = (outputStr, fileName) => {
   fs.writeFile(
@@ -44,5 +54,6 @@ module.exports = {
   rl,
   readFile,
   writeFile,
-  showAllJSONFiles
+  showAllJSONFiles,
+  isFileExist
 };

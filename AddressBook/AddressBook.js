@@ -8,8 +8,14 @@ class AddressBook {
   }
 
   addAddressBook(fileName) {
-    util.writeFile("", fileName);
+    if (util.isFileExist(fileName)) {
+      return "File already exist";
+    } else {
+      util.writeFile("", fileName);
+      return `${fileName} successfully created`;
+    }
   }
+
   addContact(person) {
     this.addressBook.push(person);
   }
@@ -42,7 +48,9 @@ class AddressBook {
   }
 
   sortContactByZip() {
-    return this.addressBook.sort((a,b)=> { return a-b; })
+    return this.addressBook.sort((a, b) => {
+      return a - b;
+    });
   }
 
   removeContact(firstName) {
