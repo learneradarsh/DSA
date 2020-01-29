@@ -50,11 +50,50 @@ class HMS {
     return false;
   }
 
+  bookAppointment(docId,patId,time){
+    let appointMentDetails;
+    let date;
+    for(let doctor in this.doctors){
+        if(this.doctors[doctor].id === docId && this.doctors[doctor].slot !== 0){
+            this.doctors[doctor].slot = this.doctors[doctor].slot - 1;
+            let patient = this.patients.find(patient =>{ return patient.id === patId?patient:false });
+            date = new Date();
+            date = date.getDate() + "/" + date.getMonth()+1 + "/" + date.getFullYear();
+            appointMentDetails = {
+                doctorId: docId,
+                doctorName: this.doctors[doctor].name,
+                patientId: patId,
+                patientName: patient.name,
+                appointDate: date,
+                appointTime: time
+            };
+            this.appointments.push(appointMentDetails);
+            return appointMentDetails;
+        }else{
+            date = new Date().getDate() + "/" + new Date().getMonth()+1 + "/" + new Date().getFullYear();
+            appointMentDetails = {
+                doctorId: docId,
+                doctorName: this.doctors[doctor].name,
+                patientId: patId,
+                patientName: patient.name,
+                appointDate: date,
+                appointTime: time
+            };
+            this.appointments.push(appointMentDetails);
+            return appointMentDetails;
+        }
+    }
+  }
+
   generateAppointmentReport() {
       return this.appointments;
   }
 
-  saveChanges() {}
+  saveChanges() {
+    writeFile(this.doctors,doctors);
+    writeFile(this.patients,patients);
+    writeFile(this.appointments,appointments);
+  }
 }
 
 module.exports = HMS;
