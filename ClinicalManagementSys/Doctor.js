@@ -14,8 +14,8 @@ class Doctor {
     this.spec = spec;
   }
 
-  setAvail(time){
-      this.avail = time;
+  setAvail(time) {
+    this.avail = time;
   }
 }
 
