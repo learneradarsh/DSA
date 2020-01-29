@@ -1,6 +1,13 @@
 const util = require("./util");
 const Doctor = require("./Doctor");
 const Patient = require("./Patient");
+const HMS = require("./HMS");
+
+let doctor = new Doctor();
+let patient = new Patient();
+let hms = new HMS();
+
+let id = 0;
 
 const mainMenu = () => {
     console.log(`
@@ -40,6 +47,8 @@ const mainMenu = () => {
                 break;
             case "10":
                 break;
+            default:
+                rl.close();
         }
     })
 }
