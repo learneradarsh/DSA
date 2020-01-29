@@ -1,6 +1,6 @@
 class Doctor {
   constructor() {
-    this.name, this.id, this.spec, this.avail;
+    this.name, this.id, this.spec, this.avail = [], this.slot = 5;
   }
   setDoctorName(name) {
     this.name = name;
@@ -14,8 +14,11 @@ class Doctor {
     this.spec = spec;
   }
 
-  setAvail(time) {
-    this.avail = time;
+  setAvail(startTime, endTime) {
+    this.avail.push({
+        startTime: startTime,
+        endTime: endTime
+    });
   }
 }
 
