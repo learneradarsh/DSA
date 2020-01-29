@@ -1,25 +1,60 @@
-class HMS{
-    constructor(){
-        this.doctors = [],
-        this.patients = [],
-        this.appointments=[]
+class HMS {
+  constructor() {
+    this.doctors = [], this.patients = [], this.appointments = [];
+  }
+  addDoctor(doctor) {
+    this.doctors.push(doctor);
+    return true;
+  }
+
+  deleteDoctor(docId) {
+    for (let i = 0; i < this.doctors.length; i++) {
+      if (docId === this.doctors[i].id) {
+        this.doctors.splice(i, 1);
+        return true;
+      }
     }
-    addDoctor(doctor){}
+    return false;
+  }
 
-    deleteDoctor(){}
+  addPatient(patient) {
+    this.patients.push(patient);
+    return true;
+  }
 
-    addPatient(patient){}
+  deletePatient(patId) {
+    for (let i = 0; i < this.patients.length; i++) {
+      if (patId === this.patients[i].id) {
+        this.patients.splice(i, 1);
+        return true;
+      }
+    }
+    return false;
+  }
 
-    deletePatient(){}
+  searchDoctorById(docId) {
+    for (let doctor in this.doctors) {
+      if (docId === this.doctors[doctor].id) {
+        return this.doctors[doctor];
+      }
+    }
+    return false;
+  }
 
-    searchDoctorById(docId){}
+  searchPatientById(patId) {
+    for (let patient in this.patients) {
+      if (patId === this.patient[patient].id) {
+        return this.patients[patient];
+      }
+    }
+    return false;
+  }
 
-    searchPatientById(patId){}
+  generateAppointmentReport() {
+      return this.appointments;
+  }
 
-    generateAppointmentReport(){}
-
-    saveChanges(){}
-
+  saveChanges() {}
 }
 
 module.exports = HMS;
