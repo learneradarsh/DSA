@@ -1,0 +1,22 @@
+doctor
+1. Name
+2. Id
+3. Spec
+4. Avail (AM or PM or both)
+
+patient
+1. Name
+2. Id
+3. Mobile Number
+4. Age
+
+Modules
+1. Add Doctor
+2. Delete Doctor
+3. Add patient
+4. Delete patient
+5. Search Doctor by name or number or id
+6. Search patient by name or number or id
+7. Generate Doctor/Patient Appoint Report
+8. Save Changes Before Exit
+9. Exit
