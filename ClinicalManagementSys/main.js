@@ -9,6 +9,14 @@ let hms = new HMS();
 
 let id = 0;
 
+const pattern = {
+  name: /[a-zA-Z]$/,
+  spec: /[a-zA-Z]$/,
+  zipcode: /^[\d]{6}$/,
+  phone: /^[\d]{10}$/,
+  age:/^[\d]{3}$/
+};
+
 const mainMenu = () => {
     console.log(`
         Welcome to HMS
@@ -28,7 +36,25 @@ const mainMenu = () => {
     util.rl.question("Select Your Choice:",(choice)=>{
         switch(choice){
             case "1":
-                break;
+                util.rl.question("Enter Doctor Name:",(inpDoctName)=>{
+                    if(pattern.name.test(inpDoctName)){
+                        doctor.setDoctorName(inpDoctName);
+                        util.rl.question("Enter Specialisation:",(inpDoctSpec)=>{
+                            if(pattern.spec.test(inpDoctSpec)){
+                                doctor.setDoctorSpec(inpDoctSpec);
+                                
+                            }else{
+                                console.log("invalid input");
+                                doctor = new Doctor();
+                                mainMenu();        
+                            }
+                        });
+                    }else{
+                        console.log("invalid input");
+                        doctor = new Doctor();
+                        mainMenu();
+                    }
+                });
             case "2":
                 break;
             case "3":
@@ -46,11 +72,12 @@ const mainMenu = () => {
             case "9":
                 break;
             case "10":
+                rl.close();
                 break;
             default:
-                rl.close();
-        }
-    })
+                mainMenu();
+        } 
+    });
 }
 
 mainMenu();
